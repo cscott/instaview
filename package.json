@@ -1,0 +1,23 @@
+{
+  "name": "instaview",
+  "version": "0.6.1",
+  "author": "Pedro Fayolle, C. Scott Ananian",
+  "description": "a Mediawiki to HTML converter in JavaScript",
+  "main": "./instaview/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cscott/instaview.git"
+  },
+  "license": "BSD",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+  },
+  "devDependencies": {
+    "mocha": "~1.8.1"
+  },
+  "scripts": {
+    "test": "mocha"
+  }
+}
