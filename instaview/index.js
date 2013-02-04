@@ -48,6 +48,7 @@ InstaView.conf =
 	},
 	
 	paths: {
+		base_href: '/',
 		articles: '/wiki/',
 		math: '/math/',
 		images: '',
@@ -69,6 +70,7 @@ InstaView.conf =
         paths = conf.paths, wiki = conf.wiki;
     user.name = user.name || 'Wikipedian'
     user.signature = '[['+locale.user+':'+user.name+'|'+user.name+']]'
+    if (typeof location === 'object') { path.base_href = location; }
     paths.images = 'http://upload.wikimedia.org/wikipedia/' + wiki.lang + '/'
 })(InstaView.conf);
 
@@ -504,10 +506,10 @@ InstaView.convert = function(wiki)
 			replace(RegExp('\\[\\[(?:'+InstaView.conf.locale.category+'|'+InstaView.conf.wiki.interwiki+'):.*?\\]\\]','gi'),'').
 			
 			// [[/Relative links]]
-			replace(/\[\[(\/[^|]*?)\]\]/g, f("<a href='?$1'>$1</a>", location)).
+			replace(/\[\[(\/[^|]*?)\]\]/g, f("<a href='?$1'>$1</a>", InstaView.conf.paths.base_href)).
 			
 			// [[/Replaced|Relative links]]
-			replace(/\[\[(\/.*?)\|(.+?)\]\]/g, f("<a href='?$1'>$2</a>", location)).
+			replace(/\[\[(\/.*?)\|(.+?)\]\]/g, f("<a href='?$1'>$2</a>", InstaView.conf.paths.base_href)).
 			
 			// [[Common links]]
 			replace(/\[\[([^|]*?)\]\](\w*)/g, f("<a href='?$1'>$1$2</a>", InstaView.conf.paths.articles)).
