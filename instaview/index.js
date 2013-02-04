@@ -1,23 +1,6 @@
-// Last update: Cacycle 22:26, 22 November 2008 (UTC)
-// <nowiki>
-
-// Script to embed InstaView in MediaWiki's edit page
-addOnloadHook(function(){
-  if (document.getElementById('editpage-copywarn')) {
-    var oldPreview = document.getElementById('wpPreview');
-    var newPreview = document.createElement('input');
-    newPreview.setAttribute('type', 'button');
-    newPreview.setAttribute('style', 'font-style: italic');
-    newPreview.setAttribute('value', 'InstaView');
-    newPreview.setAttribute('id', 'InstaView');
-    newPreview.setAttribute('name', 'InstaView');
-    newPreview.setAttribute('onclick', "InstaView.dump('wpTextbox1', 'InstaViewDump')");
-    oldPreview.parentNode.insertBefore(newPreview, oldPreview);
-    oldPreview.parentNode.innerHTML += '<div style="margin: 5px 0 5px 0; padding: 5px; border: 2px solid orange;" id="InstaViewDump"></div>';
-    oldPreview.value = 'Classic Preview';
-    }
-});
-
+if (typeof define !== 'function') { var define = require('amdefine')(module); }
+define([], function() {
+'use strict';
 /*
  * InstaView - a Mediawiki to HTML converter in JavaScript
  * Version 0.6.1
@@ -78,14 +61,16 @@ InstaView.conf =
 		category: 'Category',
 		months: ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
 	}
-}
+};
 
 // options with default values or backreferences
-with (InstaView.conf) {
-	user.name = user.name || 'Wikipedian'
-	user.signature = '[['+locale.user+':'+user.name+'|'+user.name+']]'
-	paths.images = 'http://upload.wikimedia.org/wikipedia/' + wiki.lang + '/'
-}
+(function(conf) {
+    var user = conf.user, locale = conf.locale,
+        paths = conf.paths, wiki = conf.wiki;
+    user.name = user.name || 'Wikipedian'
+    user.signature = '[['+locale.user+':'+user.name+'|'+user.name+']]'
+    paths.images = 'http://upload.wikimedia.org/wikipedia/' + wiki.lang + '/'
+})(InstaView.conf);
 
 // define constants
 InstaView.BLOCK_IMAGE = new RegExp('^\\[\\['+InstaView.conf.locale.image+':.*?\\|.*?(?:frame|thumbnail|thumb|none|right|left|center)', 'i');
@@ -964,4 +949,5 @@ function bit_rol(num, cnt)
   return (num << cnt) | (num >>> (32 - cnt));
 }
 
-// </nowiki>
+return InstaView;
+});

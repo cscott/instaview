@@ -13,6 +13,7 @@
     "test": "test"
   },
   "dependencies": {
+    "amdefine": ">=0.0.4"
   },
   "devDependencies": {
     "mocha": "~1.8.1"
