@@ -1,6 +1,6 @@
 {
   "name": "instaview",
-  "version": "0.6.2",
+  "version": "0.6.3",
   "author": "Pedro Fayolle, C. Scott Ananian",
   "description": "a Mediawiki to HTML converter in JavaScript",
   "keywords": ["mediawiki", "instaview", "wikipedia"],
