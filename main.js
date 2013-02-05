@@ -1,5 +1,5 @@
 if (typeof define !== 'function') { var define = require('amdefine')(module); }
-define([], function() {
+define(['./lib/namespace_langs'], function(namespace_langs) {
 'use strict';
 /*
  * InstaView - a Mediawiki to HTML converter in JavaScript
@@ -72,6 +72,14 @@ InstaView.conf =
     user.signature = '[['+locale.user+':'+user.name+'|'+user.name+']]'
     if (typeof location === 'object') { path.base_href = location; }
     paths.images = 'http://upload.wikimedia.org/wikipedia/' + wiki.lang + '/'
+    // generate list of interwiki link prefixes from keys in namespace_langs
+    var langs = [], l;
+    for (l in namespace_langs) {
+        if (Object.prototype.hasOwnProperty.call(namespace_langs, l)) {
+            langs.push(l);
+        }
+    }
+    wiki.interwiki = langs.join('|');
 })(InstaView.conf);
 
 // define constants

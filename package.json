@@ -4,7 +4,7 @@
   "author": "Pedro Fayolle, C. Scott Ananian",
   "description": "a Mediawiki to HTML converter in JavaScript",
   "keywords": ["mediawiki", "instaview", "wikipedia"],
-  "main": "./instaview.js",
+  "main": "./main.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/cscott/instaview.git"
