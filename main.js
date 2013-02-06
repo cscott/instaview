@@ -70,7 +70,7 @@ InstaView.conf =
         paths = conf.paths, wiki = conf.wiki;
     user.name = user.name || 'Wikipedian'
     user.signature = '[['+locale.user+':'+user.name+'|'+user.name+']]'
-    if (typeof location === 'object') { path.base_href = location; }
+    if (typeof location === 'object') { paths.base_href = location; }
     paths.images = 'http://upload.wikimedia.org/wikipedia/' + wiki.lang + '/'
     // generate list of interwiki link prefixes from keys in namespace_langs
     var langs = [], l;
