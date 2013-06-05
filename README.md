@@ -1,5 +1,7 @@
 # instaview
 
+[![Build Status](https://travis-ci.org/cscott/instaview.png)](https://travis-ci.org/cscott/instaview)
+
 `instaview` is a Mediawiki to HTML converter in JavaScript.  It was
 originally written by Pedro Fayolle as a fast previewer for Wikipedia
 at http://en.wikipedia.org/wiki/User:Pilaf.  C. Scott Ananian cleaned
